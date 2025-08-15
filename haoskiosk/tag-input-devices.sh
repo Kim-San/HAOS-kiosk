@@ -1,8 +1,16 @@
 #!/bin/bash
+################################################################################
+# Add-on: HAOS Kiosk Display (haoskiosk)
+# File: run.sh
+# Version: 1.0.0
+# Copyright Jeff Kosowsky
+# Date: July 2025
 
-# Purpose: Tags USB input devices (keyboard, mouse, joystick) for libinput and Home Assistant by writing to /run/udev/data.
+# Description: Tags USB input devices (keyboard, mouse, joystick) for libinput and Home Assistant by writing to /run/udev/data.
 # Usage: Run as root in HA container: bash tag-input-devices.sh
 # Notes: Used in containers without udev rule support. Run on startup or device change.
+#
+################################################################################
 
 # Create udev data directory
 mkdir -p /run/udev/data

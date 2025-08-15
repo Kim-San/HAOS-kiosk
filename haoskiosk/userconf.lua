@@ -91,6 +91,9 @@ if browser_refresh < 0 then
 end
 
 -- -----------------------------------------------------------------------
+-- Forward console messages to stdout
+settings.set_setting("webview.enable_write_console_messages_to_stdout", true)
+
 -- Set window to fullscreen
 window.add_signal("init", function(w)
     w.win.fullscreen = true
@@ -111,6 +114,8 @@ local function single_quote_escape(str) -- Single quote strings before injection
 end
 
 -- -----------------------------------------------------------------------
+-- Auto-login to homeassistant (if on HA url) and set 'theme' and 'sidebar settings
+
 local first_window = true
 local ha_settings_applied = setmetatable({}, { __mode = "k" }) -- Flag to track if HA settings have already been applied in this session
 
@@ -152,7 +157,7 @@ webview.add_signal("init", function(view)
 		    const usernameField = document.querySelector('input[autocomplete="username"]');
 		    const passwordField = document.querySelector('input[autocomplete="current-password"]');
 		    const haCheckbox = document.querySelector('ha-checkbox');
-		    const submitButton = document.querySelector('mwc-button');
+		    const submitButton = document.querySelector('ha-button, mwc-button');
 
                     if (usernameField && passwordField && submitButton) {
                         usernameField.value = '%s';

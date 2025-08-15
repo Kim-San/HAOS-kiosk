@@ -2,13 +2,22 @@
 
 ## v1.0.0 - July 2025
 
-- Fixed luakit issues and reverted to latest version
 - Switched from (legacy) framebuffer-based video (fbdev) to OpenGL/DRI
   video
 - Switched from (legacy) evdev input handling to libinput input handling
-- Added 'rotation' configuration
-- Simp\`lified 'xorg.conf'
+- Switched from "HDMI PORT" to "OUTPUT NUMBER" to determine which physical
+  port is displayed
+- Added 'rotation' config to rotate display
+- Added boolean config to determine whether touch inputs are mapped to the
+  display output (in particular, this will rotate them in sync)
+- Modified 'xorg.conf' for consistency with 'OpenGL/DRI' and 'libinput'
+- Attempted to maximize compatibility across RPi and x86
 - Added ability to append to or replace default 'xorg.conf'
+- Added ability to set keyboard layout. (default: 'us')
+- Updated & improved userconf.lua code
+- Extensive changes and improvements to 'run.sh' code
+- Added back (local) DBUS to allow for inter-process luakit communication
+  (e.g., to allow use of unique instance)
 
 ## v0.9.9 - July 2025
 

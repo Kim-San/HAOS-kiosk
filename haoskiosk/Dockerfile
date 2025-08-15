@@ -26,19 +26,21 @@ RUN apk update && apk add --no-cache \
     openbox \
     ttf-dejavu \
     util-linux \
-    xset \
     xdotool \
+    xinput \
     xrandr \
+    xset \
+    setxkbmap \
     bash \
-    luakit \
+    && apk add --no-cache --repository=https://dl-cdn.alpinelinux.org/alpine/v3.21/community luakit=2.3.6-r0 \
     && rm -rf /var/cache/apk/*
 
 # Set the display variable
 ENV DISPLAY=:0
 
-# Copy over 'xorg.conf' and lua 'userconf.lua' file
-COPY xorg.conf /etc/X11/xorg.conf
-COPY userconf.lua /root/.config/luakit/userconf.lua
+# Copy over 'xorg.conf.default' and lua 'userconf.lua' file
+COPY xorg.conf.default /etc/X11/
+COPY userconf.lua /root/.config/luakit/
 COPY translations/*.yaml /translations/
 
 COPY run.sh /
